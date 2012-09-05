@@ -1,0 +1,16 @@
+UserTimezone:
+  options:
+    symfony:          { filter: false }
+  columns:
+    sf_guard_user_id: { type: integer(8) }
+    name:             { type: string(36), notnull: true }
+  indexes:
+    name:             { fields: [name] }
+  relations:
+    User:
+      class:          sfGuardUser
+      local:          sf_guard_user_id
+      foreign:        id
+      foreignAlias:   Timezone
+      foreignType:    one
+      onDelete:       CASCADE
